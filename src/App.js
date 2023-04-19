@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "./App.css";
 import Counter from "./Components/Counter";
 import Profile from "./Components/Profile";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import { Col, Row } from "react-bootstrap";
 
 export default class App extends Component {
   constructor(props) {
@@ -24,16 +27,27 @@ export default class App extends Component {
     //console.log(this.state.show);
     return (
       <div>
-        <button onClick={this.toggleCounter}>{this.state.showCounter? 'Hide Counter' : 'Show Counter'}</button>
-        <button onClick={this.toggle}>{this.state.show? 'Hide Profile' : 'Show Profile'}</button>
+           <Card className="text-center">
+      <Card.Header>GoMyCode</Card.Header>
+      <Card.Body>
+        <Card.Title>WorkShop React-State</Card.Title>
+        <Card.Text>
+          This project contains both of the workshop and the checkpoint React State.
+        </Card.Text>
+        <Button variant="primary" onClick={this.toggleCounter}>{this.state.showCounter? 'Hide Counter' : 'Show Counter'}</Button>
+        <Button variant="primary" onClick={this.toggle}>{this.state.show? 'Hide Profile' : 'Show Profile'}</Button>
+      </Card.Body>
+      <Card.Footer className="text-muted">Kareem Chebbi</Card.Footer>
+    </Card>
+    <div >
 
-        {
-          this.state.showCounter && <Counter />
-        }
-        
-        { this.state.show &&
-          <Profile />
-        }
+      <Row>
+        <Col className="display">{this.state.showCounter && <Counter />}</Col>
+        <Col className="display">{ this.state.show && <Profile />}</Col>
+      </Row>
+      
+    </div>
+
       </div>
     );
   }

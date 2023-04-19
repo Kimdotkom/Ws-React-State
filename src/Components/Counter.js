@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button } from 'react-bootstrap';
 
 export default class Counter extends Component {
     // State Init
@@ -29,13 +30,19 @@ export default class Counter extends Component {
         console.log('Component Will unmount')
     }
 
+    reset = () => {
+      this.setState({count: 0})
+    }
+
   render() {
     console.log('Component rendring')
     return (
       <div>
-        <button onClick={this.increment}>+</button>
-        <span>{this.state.count}</span>
-        <button onClick={this.decrement}>-</button>
+        <h1>Counter</h1>
+        <Button variant='success' onClick={this.increment}> Increment +1 </Button>
+        <Button variant='light'>{this.state.count}</Button>
+        <Button variant='danger' onClick={this.decrement}> Decrement -1 </Button>
+        <Button onClick={this.reset}>Reset</Button>
       </div>
     )
   }
